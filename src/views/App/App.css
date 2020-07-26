@@ -1,0 +1,24 @@
+/* @import url('https://fonts.googleapis.com/css2?family=MuseoModerno&family=Varela+Round&display=swap'); */
+
+:root {
+  --primary: #f9f9f9;
+  --secondary: #F3F3F7;
+  --primary-color: #ae3764;
+}
+
+.uk-text-small, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium,  .uk-heading-xlarge,  .uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
+  /* font-family: 'Varela Round', sans-serif; */
+  color: var(--primary-color);
+}
+
+
+.uk-background-primary {
+  background-color: var(--primary);
+}
+
+
+@media (min-width: 960px){
+  .tm-sidebar-left+.tm-main {
+      padding-left: 240px;
+  }
+}
