@@ -14,20 +14,11 @@ export default class CasePage extends React.Component{
     componentDidMount(){
     }
 
-    getPageNumbers = (id) => {
-        console.log(id)
-        let value = document.getElementById(id).contentWindow.document.querySelectorAll('.page').length
-        console.log(value)
-        return value
-    }
-
     render() {
         return (
-            this.state.case === {} ?
-            ""
-            : 
+            this.state.case ?
             <>
-            <Sidebar active="mycases"/>
+            <Sidebar active="mycases" user_type={this.props.user_type ? "admin" : "all"}/>
             <div className="tm-main uk-section uk-section-default">
                 <div className="uk-container uk-container-small uk-position-relative">
                     <div>
@@ -53,6 +44,7 @@ export default class CasePage extends React.Component{
                 </div>
             </div>
         </>
+        : ""
         )
     }
 }

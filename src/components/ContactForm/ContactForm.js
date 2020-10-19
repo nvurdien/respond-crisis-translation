@@ -3,8 +3,8 @@ import React from 'react';
 import './ContactForm.css'
 
 class ContactForm extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -104,7 +104,7 @@ class ContactForm extends React.Component {
                                 let ans = this.props.answers
                                 ans['first_name'] = event.target.value
                                 this.props.onChange({answers: ans})
-                            }} label="" required="" name="first_name" placeholder="Your First Name" title="first_name"/>
+                            }}  required={false} name="first_name" placeholder="Your First Name" title="first_name"/>
                         </div>
                         <div className="uk-width-1-2@s">
                             <label className="uk-form-label" htmlFor="last_name">Last Name</label>
@@ -112,7 +112,7 @@ class ContactForm extends React.Component {
                                 let ans = this.props.answers
                                 ans['last_name'] = event.target.value
                                 this.props.onChange({answers: ans})
-                            }} label="" required="" name="last_name" placeholder="Your Last Name" title="last_name"/>
+                            }}  required={false} name="last_name" placeholder="Your Last Name" title="last_name"/>
                         </div>
                         <div className="uk-width-1-2@s">
                             <label className="uk-form-label" htmlFor="email">Email Address</label>
@@ -120,7 +120,7 @@ class ContactForm extends React.Component {
                                 let ans = this.props.answers
                                 ans['email'] = event.target.value
                                 this.props.onChange({answers: ans})
-                            }} label="" required="" name="email" placeholder="Your Email" title="email" type="email"/>
+                            }}  required={false} name="email" placeholder="Your Email" title="email" type="email"/>
                         </div>
                         <div className="uk-width-1-1">
                             <label className="uk-form-label" htmlFor="about">Tell us a little bit about yourself and your interest for joining our translator network:</label>
@@ -128,7 +128,7 @@ class ContactForm extends React.Component {
                                 let ans = this.props.answers
                                 ans['about'] = event.target.value
                                 this.props.onChange({answers: ans})
-                            }}  required="" label="" name="about" placeholder="type your answer here" rows="5" title="about"/>
+                            }}  required={false}  name="about" placeholder="type your answer here" rows="5" title="about"/>
                         </div>
                         <div className="uk-margin uk-text-center" uk-margin="">
                             <button className="uk-button uk-button-primary uk-button-small" onClick={this.props.previous}>Back</button>

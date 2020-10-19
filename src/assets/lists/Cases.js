@@ -12,12 +12,16 @@ export default [
                 file_link: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview',
                 file_type: 'docx',
                 date_completed: Date.now(),
-                translated_document_link: ''
+                translated_document_link: '',
+                certificate_upload: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview'
             }
         ],
         note: 'birth certificate contains hand-written content',
         project_manager: 'Ariel Koen',
-        contact: ''
+        contact: '',
+        source: 'RAICES',
+        status: 'Pending',
+        translator: 1
     },
     {
         case_number: 1236,
@@ -32,12 +36,16 @@ export default [
                 file_link: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview',
                 file_type: 'docx',
                 date_completed: Date.now(),
-                translated_document_link: ''
+                translated_document_link: '',
+                certificate_upload: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview'
             }
         ],
         note: 'Large volume of documents',
         project_manager: 'Ariel Koen',
-        contact: ''
+        contact: '',
+        source: 'RAICES',
+        status: 'Pending',
+        translator: 1
     },
     {
         case_number: 1456,
@@ -52,12 +60,16 @@ export default [
                 file_link: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview',
                 file_type: 'docx',
                 date_completed: Date.now(),
-                translated_document_link: ''
+                translated_document_link: '',
+                certificate_upload: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview'
             }
         ],
         note: 'birth certificate contains hand-written content',
         project_manager: 'Ariel Koen',
-        contact: ''
+        contact: '',
+        source: 'RAICES',
+        status: 'Pending',
+        translator: 1
     },
     {
         case_number: 123456,
@@ -72,12 +84,16 @@ export default [
                 file_link: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview',
                 file_type: 'docx',
                 date_completed: Date.now(),
-                translated_document_link: ''
+                translated_document_link: '',
+                certificate_upload: 'https://drive.google.com/file/d/0B4fNLDIKtU4JZ3hQRmNOZFBFU3c/preview'
             }
         ],
         note: 'birth certificate contains hand-written content',
         project_manager: 'Ariel Koen',
-        contact: ''
+        contact: '',
+        source: 'RAICES',
+        status: 'Pending',
+        translator: 1
     },
 
 ]

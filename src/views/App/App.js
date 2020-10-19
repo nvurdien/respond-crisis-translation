@@ -10,6 +10,11 @@ import './App.css';
 const Home = lazy(() => import('../Home/Home'));
 const Application = lazy(() => import('../Application/Application'));
 const CasePage = lazy(() => import('../CasePage/CasePage'));
+const Cases = lazy(() => import('../Cases/Cases'));
+const Translators = lazy(() => import('../Translators/Translators'));
+const Statistics = lazy(() => import('../Statistics/Statistics'));
+const Onboarding = lazy(() => import('../Onboarding/Onboarding'));
+const Settings = lazy(() => import('../Settings/Settings'));
 
 const history = createBrowserHistory();
 
@@ -19,7 +24,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      auth: false
+      auth: false,
+      admin: true,
     }
   }
 
@@ -33,14 +39,25 @@ class App extends Component {
   })
 
   render() {
-    console.log(this.state.auth)
     return (
       <Router history={history}>
         <Suspense fallback={<div></div>}>
           <Switch>
-            <Route exact path="/" render={(props) => <Home {...props} />}/>
-            <Route exact path="/application" render={(props) => <Application {...props} />}/>
-            <Route exact path="/case/:case_id" render={(props) => <CasePage {...props} />}/>
+            {
+              this.state.admin ?
+              <Route exact path="/" render={(props) => <Cases {...props} user_type={this.props.admin} />}/> :
+              <Route exact path="/" render={(props) => <Home {...props} user_type={this.props.admin} />}/>
+            }
+            <Route exact path="/application" render={(props) => <Application {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/onboarding" render={(props) => <Onboarding {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/settings" render={(props) => <Settings {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/statistics" render={(props) => <Statistics {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/translator" render={(props) => <Translators {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/case" render={(props) => <Cases {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/case/:case_id" render={(props) => <CasePage {...props} user_type={this.props.admin} />}/>
+            {
+              this.state.admin ? <Route exact path="/mycases" render={(props) => <Home {...props} user_type={this.props.admin} />}/> : ""
+            }
           </Switch>
         </Suspense>
       </Router>
