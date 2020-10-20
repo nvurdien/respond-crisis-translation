@@ -1,16 +1,16 @@
 export default [
 
     {
-        display: 'Cases',
-        link: '/case',
-        active: 'cases',
-        visibility: 'admin'
-    },
-    {
         display: 'My Cases',
         link: '/mycases',
         active: 'mycases',
         visibility: 'all'
+    },
+    {
+        display: 'Cases',
+        link: '/case',
+        active: 'cases',
+        visibility: 'admin'
     },
     {
         display: 'Translators',
@@ -23,11 +23,5 @@ export default [
         link: '/onboarding',
         active: 'onboarding',
         visibility: 'admin'
-    },
-    {
-        display: 'Settings',
-        link: '/settings',
-        active: 'settings',
-        visibility: 'all'
     },
 ]

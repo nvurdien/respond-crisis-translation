@@ -21,7 +21,7 @@ export default class Cases extends React.Component {
     render() {
         return(
         <>
-            <Sidebar active="cases" user_type={this.props.user_type ? "admin" : "all"}/>
+            <Sidebar active="cases" user_type={this.props.user_type ? "admin" : "all"} first_name={this.props.first_name} last_name={this.props.last_name}/>
             <div className="tm-main uk-section uk-section-default">
                     <div className="uk-container uk-position-relative uk-margin-remove" style={{paddingLeft: '10px', paddingRight: '10px', marginRight: '0px'}}>
                     <table className="uk-table uk-table-divider">
@@ -41,9 +41,9 @@ export default class Cases extends React.Component {
                             {
                                 cases.map((onboard, i) => (
                                     <React.Fragment key={onboard.first_name+onboard.last_name+" "+i}>
-                                        <tr onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
+                                        <tr onClick={() => {this.setState({show: this.state.show === i ? null : i})}} style={this.state.show === i ? {borderLeft: '1px solid #e0e0e0', borderRight: '1px solid #e0e0e0', cursor: 'pointer'} : {cursor: 'pointer'}}>
                                             <td>
-                                                <span className="uk-label">{lang_short[onboard.fromLanguage]} - {lang_short[onboard.toLanguage]}</span>
+                                                <span className="uk-label">{lang_short[onboard.fromLanguage]} &#9658; {lang_short[onboard.toLanguage]}</span>
                                                 
                                             </td>
                                             <td>
@@ -68,9 +68,9 @@ export default class Cases extends React.Component {
                                                 {translators[onboard.translator].first_name} {translators[onboard.translator].last_name}
                                             </td>
                                         </tr>
-                                        <tr style={{display: this.state.show === i ? "" : "none"}}>
+                                        <tr style={{display: this.state.show === i ? "" : "none", borderTop: 'none', borderLeft: '1px solid #e0e0e0', borderRight: '1px solid #e0e0e0', borderBottom: '1px solid #e0e0e0'}}>
                                             <td></td>
-                                            <td colSpan={8}>
+                                            <td colSpan={7}>
                                                 <div uk-grid="">
                                                     <div className="uk-width-auto">
                                                         <p>
@@ -89,6 +89,7 @@ export default class Cases extends React.Component {
                                                         </p>
                                                     </div>
                                                 </div>
+                                                <hr/>
                                                 <table className="uk-table">
                                                     <thead>
                                                         <tr>
@@ -102,7 +103,7 @@ export default class Cases extends React.Component {
                                                     <tbody>
                                                         {
                                                             onboard.documents.map((document, p) => 
-                                                                <tr>
+                                                                <tr key={`${document.name} ${p} ${document.file_type}`}>
                                                                     <td>
                                                                         {document.name}
                                                                     </td>
@@ -123,6 +124,9 @@ export default class Cases extends React.Component {
                                                         }
                                                     </tbody>
                                                 </table>
+                                                <hr/>
+                                                <p><b>Notes</b></p>
+                                                {onboard.note}
                                             </td>
                                         </tr>
                                     </React.Fragment>

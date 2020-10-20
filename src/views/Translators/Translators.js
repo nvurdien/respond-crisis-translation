@@ -4,7 +4,9 @@ import translator from '../../assets/lists/translators';
 import formatDate from '../../assets/helpers/formatDate';
 
 import lang_short from '../../assets/lists/langShort';
+import cases from '../../assets/lists/Cases';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import AssignTask from '../../components/AssignTask/AssignTask';
 
 
 export default class Translators extends React.Component {
@@ -20,7 +22,7 @@ export default class Translators extends React.Component {
     render() {
         return(
         <>
-            <Sidebar active="translators" user_type={this.props.user_type ? "admin" : "all"}/>
+            <Sidebar active="translators" user_type={this.props.user_type ? "admin" : "all"} first_name={this.props.first_name} last_name={this.props.last_name}/>
             <div className="tm-main uk-section uk-section-default">
                     <div className="uk-container uk-position-relative uk-margin-remove" style={{paddingLeft: '10px', paddingRight: '10px', marginRight: '0px'}}>
                     <table className="uk-table uk-table-divider">
@@ -40,27 +42,27 @@ export default class Translators extends React.Component {
                             {
                                 translator.map((onboard, i) => (
                                     <React.Fragment key={onboard.first_name+onboard.last_name+" "+i}>
-                                        <tr onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
-                                            <td>
+                                        <tr style={{cursor: 'pointer'}}>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                     {onboard.first_name} {onboard.last_name} (3)
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                 {
                                                     onboard.languages.map((language, y) => (
-                                                        <span className="uk-label" key={onboard.first_name+onboard.last_name+language.from_langauge+language.to_langauge+" language(s) "+i+" "+y}>{lang_short[language.from_langauge]} - {lang_short[language.to_language]}</span>
+                                                        <span className="uk-label" key={onboard.first_name+onboard.last_name+language.from_langauge+language.to_langauge+" language(s) "+i+" "+y}>{lang_short[language.from_langauge]} &#9658; {lang_short[language.to_language]}</span>
                                                     ))
                                                 }
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                     {formatDate(onboard.date_accepted)}
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                     {formatDate(onboard.date_accepted)}
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                 4/5
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                 {
                                                     onboard.specialities.map((special, z) => (
                                                         <span key={onboard.first_name+onboard.last_name+special+" "+i+" "+z}>
@@ -69,14 +71,14 @@ export default class Translators extends React.Component {
                                                     ))
                                                 }
                                             </td>
-                                            <td>
+                                            <td onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
                                                 {onboard.notes}
                                             </td>
                                             <td>
-                                            <button className="uk-button uk-button-primary">Assign</button>
+                                                <AssignTask first_name={onboard.first_name} last_name={onboard.last_name} task_in_progress={5} languages={onboard.languages} tasks={cases}/>
                                             </td>
                                         </tr>
-                                        <tr style={{display: this.state.show === i ? "" : "none"}}>
+                                        <tr style={{display: this.state.show === i ? "" : "none", borderTop: 'none'}}>
                                             <td colSpan={8}>
                                                 
                                                 <div uk-grid="">
@@ -126,6 +128,15 @@ export default class Translators extends React.Component {
                                                     <div className="uk-width-auto">
                                                         {onboard.notes}
                                                     </div>
+                                                </div>
+                                                <div className="uk-clearfix">
+                                                        <div className="uk-float-left">
+                                                            <button className="uk-button uk-button-danger">Deactivate</button>
+                                                        </div>
+                                                        <div className="uk-float-right">
+                                                            <button className="uk-button uk-button-primary" style={{marginRight: '5px'}}>Records</button> 
+                                                            <button className="uk-button uk-button-primary">Edit</button>
+                                                        </div>
                                                 </div>
                                             </td>
                                         </tr>

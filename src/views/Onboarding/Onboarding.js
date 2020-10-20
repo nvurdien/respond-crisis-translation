@@ -2,6 +2,7 @@ import React from 'react';
 import './Onboarding.css';
 import Onboard from '../../assets/lists/onboarding';
 import TranslationTest from '../../assets/lists/translationTest';
+import lang_short from '../../assets/lists/langShort';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 
@@ -17,9 +18,10 @@ export default class Onboarding extends React.Component {
 
 
     render() {
+        console.log(this.props)
         return(
         <>
-            <Sidebar active="onboarding" user_type={this.props.user_type ? "admin" : "all"}/>
+            <Sidebar active="onboarding" user_type={this.props.user_type ? "admin" : "all"} first_name={this.props.first_name} last_name={this.props.last_name}/>
             <div className="tm-main uk-section uk-section-default">
                     <div className="uk-container uk-position-relative uk-margin-remove" style={{paddingLeft: '10px', paddingRight: '10px', marginRight: '0px'}}>
                     <table className="uk-table uk-table-divider">
@@ -36,14 +38,14 @@ export default class Onboarding extends React.Component {
                             {
                                 Onboard.map((onboard, i) => (
                                     <React.Fragment key={onboard.first_name+onboard.last_name+" "+i}>
-                                        <tr onClick={() => {this.setState({show: this.state.show === i ? null : i})}}>
+                                        <tr onClick={() => {this.setState({show: this.state.show === i ? null : i})}} style={{cursor: 'pointer'}}>
                                             <td>
                                                     {onboard.first_name} {onboard.last_name}
                                             </td>
                                             <td>
                                                 {
                                                     onboard.languages.map((language, y) => (
-                                                        <span className="uk-label" key={onboard.first_name+onboard.last_name+language.from_langauge+language.to_langauge+" language(s) "+i+" "+y}>{language.from_langauge}</span>
+                                                        <span className="uk-label" key={onboard.first_name+onboard.last_name+language.from_langauge+language.to_langauge+" language(s) "+i+" "+y}>{lang_short[language.from_langauge]} &#9658; {lang_short[language.to_language]}</span>
                                                     ))
                                                 }
                                             </td>
@@ -65,9 +67,14 @@ export default class Onboarding extends React.Component {
                                                 }
                                             </td>
                                         </tr>
-                                        <tr style={{display: this.state.show === i ? "" : "none"}}>
+                                        <tr style={{display: this.state.show === i ? "" : "none", borderTop: 'none'}}>
                                             <td colSpan={5}>
-                                                {onboard.email}
+                                                <p>
+                                                    <b>Email</b>
+                                                </p>
+                                                <p>
+                                                    {onboard.email}
+                                                </p>
                                                 <p>
                                                     <b>Reason for joining</b>
                                                 </p>
@@ -135,7 +142,7 @@ export default class Onboarding extends React.Component {
                                             
                                                     </div>
                                                     <div className="uk-float-right">
-                                                        <button className="uk-button uk-button-danger">Reject</button>
+                                                        <button className="uk-button uk-button-danger" style={{marginRight: '5px'}}>Reject</button>
                                                         <button className="uk-button uk-button-primary">Approve</button>
                                                     </div>
                                                 </div>

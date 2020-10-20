@@ -8,3 +8,14 @@
     border-right: 1px #e5e5e5 solid;
     overflow: auto;
 }
+
+.uk-nav-primary>li>a {
+    color: black;
+    padding-left:10px;
+    font-size: 18px;
+}
+
+.uk-nav-primary>li.uk-active>a {
+    background-color: #f6f6f6;
+    border-radius: 6px;
+}

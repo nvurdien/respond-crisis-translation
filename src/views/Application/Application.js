@@ -28,8 +28,6 @@ export default class Application extends React.Component {
 
     onChange = (values) => {
         this.setState(values)
-        console.log(this.state.answers)
-        console.log(this.state.languages)
     }
 
     componentDidMount(){
@@ -81,6 +79,9 @@ export default class Application extends React.Component {
             bar.children[0].classList.add("is-current");
             this.setState({currentProgress: 0})
         }
+
+        console.log(this.state.answers)
+        console.log(this.state.languages)
     }
 
     previous = () => {
@@ -106,7 +107,7 @@ export default class Application extends React.Component {
 
     render() {
         return (
-            <div className="uk-background-primary">
+            <div>
                 <div className="uk-margin-large-left">
                         <ol id="ProgressBar">
                         {

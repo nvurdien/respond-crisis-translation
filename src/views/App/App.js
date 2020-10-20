@@ -4,6 +4,8 @@ import {Route, Router, Switch} from 'react-router-dom';
 
 import 'uikit/dist/css/uikit.min.css';
 import 'uikit/dist/js/uikit.min';
+import 'uikit/dist/js/uikit-icons.min';
+
 import './App.css';
 // import UIkit from 'uikit';
 
@@ -26,6 +28,8 @@ class App extends Component {
     this.state = {
       auth: false,
       admin: true,
+      first_name: 'Jane',
+      last_name: 'Doe'
     }
   }
 
@@ -37,6 +41,7 @@ class App extends Component {
       console.log(response.status)
       return Promise.reject();
   })
+  
 
   render() {
     return (
@@ -45,18 +50,18 @@ class App extends Component {
           <Switch>
             {
               this.state.admin ?
-              <Route exact path="/" render={(props) => <Cases {...props} user_type={this.props.admin} />}/> :
-              <Route exact path="/" render={(props) => <Home {...props} user_type={this.props.admin} />}/>
+              <Route exact path="/" render={(props) => <Cases {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/> :
+              <Route exact path="/" render={(props) => <Home {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
             }
-            <Route exact path="/application" render={(props) => <Application {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/onboarding" render={(props) => <Onboarding {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/settings" render={(props) => <Settings {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/statistics" render={(props) => <Statistics {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/translator" render={(props) => <Translators {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/case" render={(props) => <Cases {...props} user_type={this.props.admin} />}/>
-            <Route exact path="/case/:case_id" render={(props) => <CasePage {...props} user_type={this.props.admin} />}/>
+            <Route exact path="/application" render={(props) => <Application {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/onboarding" render={(props) => <Onboarding {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/settings" render={(props) => <Settings {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/statistics" render={(props) => <Statistics {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/translator" render={(props) => <Translators {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/case" render={(props) => <Cases {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
+            <Route exact path="/case/:case_id" render={(props) => <CasePage {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/>
             {
-              this.state.admin ? <Route exact path="/mycases" render={(props) => <Home {...props} user_type={this.props.admin} />}/> : ""
+              this.state.admin ? <Route exact path="/mycases" render={(props) => <Home {...props} user_type={this.state.admin} first_name={this.state.first_name} last_name={this.state.last_name} />}/> : ""
             }
           </Switch>
         </Suspense>

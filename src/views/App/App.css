@@ -22,3 +22,35 @@
       padding-left: 240px;
   }
 }
+
+.uk-label {
+  background: none;
+  border: 1px solid black;
+  color: black;
+  border-radius: 6px;
+}
+
+.uk-table th {
+  color: black;
+  text-transform: lowercase;
+  font-weight: 700;
+  padding: 8px 1px;
+}
+
+html {
+  color: black;
+}
+
+.uk-table td {
+  padding: 8px 1px;
+}
+
+.uk-button {
+  border-radius:6px;
+  line-height: 30px;
+  text-transform: capitalize;
+}
+
+.uk-button-small {
+  line-height: 25px;
+}

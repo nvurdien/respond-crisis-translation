@@ -127,7 +127,6 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                                                         let leng = lang.splice(langIndex, 1);
                                                         setLang(leng);
                                                     }
-                                                    console.log(lang)
                                                     onChange({languages: temp})
                                                 }
                                             }> {language}
@@ -164,7 +163,6 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                                                             let leng = toLang.splice(langIndex, 1);
                                                             setToLang(leng);
                                                         }
-                                                        console.log(toLang)
                                                         onChange({languages: temp})
                                                     }
                                                 }>
@@ -190,7 +188,6 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                                                             let leng = fromLang.splice(langIndex, 1);
                                                             setFromLang(leng);
                                                         }
-                                                        console.log(fromLang)
                                                         onChange({languages: temp})
                                                     }
                                                 }>
@@ -275,8 +272,9 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                         <li><a href="#">done</a></li>
                     </ul>
                     <ul className="uk-switcher uk-margin">
-                        {Object.keys(Languages).map((l, index) => ( Languages[l]['checked'] && Languages[l]['toEnglish'] ? 
-                            <li key={l + 'translationpart'}>
+                        {Object.keys(Languages).map((l, index) => ( Languages[l]['checked'] && Languages[l]['toEnglish'] && Languages[l]['fromEnglish'] ? 
+                        <React.Fragment>
+                            <li key={l + 'translationpartto'}>
                                 <label className="uk-form-label" >Please translate the following {l} message into English</label>
                                 ...
                                 <div className="uk-width-1-1">
@@ -285,10 +283,7 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                                 </div>
                                 <button className="uk-button uk-button-primary uk-button-small" uk-switcher-item="next">Next</button>
                             </li>
-                            : ""
-                        ))}
-                        {Object.keys(Languages).map((l, index) => ( Languages[l]['checked'] && Languages[l]['fromEnglish'] ? 
-                            <li key={l + 'translationpart'}>
+                            <li key={l + 'translationpartfrom'}>
                                 <label className="uk-form-label" >Please translate the following English message into {l}</label>
                                 ...
                                 <div className="uk-width-1-1">
@@ -296,8 +291,28 @@ export default ({currentProgress, translationDone, languagesDone, onChange, adva
                                     <textarea alt="translation" className="uk-textarea" id="translation" required="" label="" name="translation" placeholder="type your answer here" rows="5" title="translation"/>
                                 </div>
                                 <button className="uk-button uk-button-primary uk-button-small" uk-switcher-item="next">Next</button>
-                            </li>
-                            : ""
+                            </li> 
+                        </React.Fragment>
+                            : Languages[l]['checked'] && Languages[l]['fromEnglish'] ? 
+                            <li key={l + 'translationpartfrom'}>
+                                <label className="uk-form-label" >Please translate the following English message into {l}</label>
+                                ...
+                                <div className="uk-width-1-1">
+                                    <label className="uk-form-label" htmlFor="translation">Your answer:</label>
+                                    <textarea alt="translation" className="uk-textarea" id="translation" required="" label="" name="translation" placeholder="type your answer here" rows="5" title="translation"/>
+                                </div>
+                                <button className="uk-button uk-button-primary uk-button-small" uk-switcher-item="next">Next</button>
+                            </li> 
+                            : Languages[l]['checked'] && Languages[l]['toEnglish'] ? 
+                            <li key={l + 'translationpartto'}>
+                                <label className="uk-form-label" >Please translate the following {l} message into English</label>
+                                ...
+                                <div className="uk-width-1-1">
+                                    <label className="uk-form-label" htmlFor="translation">Your answer:</label>
+                                    <textarea alt="translation" className="uk-textarea" id="translation" required="" label="" name="translation" placeholder="type your answer here" rows="5" title="translation"/>
+                                </div>
+                                <button className="uk-button uk-button-primary uk-button-small" uk-switcher-item="next">Next</button>
+                            </li> : ""
                         ))}
                         <li>
                             <h1 className="uk-text-lead">
