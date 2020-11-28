@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "rct-portal---dev",
+    "prod": "rct-portal"
+  }
+}
