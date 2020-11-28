@@ -16,16 +16,6 @@ export default class Cases extends React.Component {
   }
 
   componentDidMount() {
-    //   cases.forEach((c) => {
-    //     const docId = db.collection('cases').doc().id;
-    //           c.id = docId;
-    //       db.collection('cases').doc(docId).set(c);
-    //   });
-    //   translators.forEach((t) => {
-    //       const docId = db.collection('translators').doc().id;
-    //       t.id = docId;
-    //       db.collection('translators').doc(docId).set(t);
-    //   });
     db.collection("cases")
       .get()
       .then((snapshot) => {
