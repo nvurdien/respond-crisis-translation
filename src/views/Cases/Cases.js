@@ -1,10 +1,8 @@
 import React from "react";
 import "./Cases.css";
-// import cases from '../../assets/lists/Cases';
 import formatDate from "../../assets/helpers/formatDate";
 
 import lang_short from "../../assets/lists/langShort";
-import translators from "../../assets/lists/translators";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { db } from "../../firebase";
 
@@ -18,6 +16,16 @@ export default class Cases extends React.Component {
   }
 
   componentDidMount() {
+    //   cases.forEach((c) => {
+    //     const docId = db.collection('cases').doc().id;
+    //           c.id = docId;
+    //       db.collection('cases').doc(docId).set(c);
+    //   });
+    //   translators.forEach((t) => {
+    //       const docId = db.collection('translators').doc().id;
+    //       t.id = docId;
+    //       db.collection('translators').doc(docId).set(t);
+    //   });
     db.collection("cases")
       .get()
       .then((snapshot) => {
@@ -94,8 +102,8 @@ export default class Cases extends React.Component {
                       <td>{onboard.status}</td>
                       <td>{onboard.project_manager}</td>
                       <td>
-                        {translators[onboard.translator].first_name}{" "}
-                        {translators[onboard.translator].last_name}
+                        {onboard.translator.first_name}{" "}
+                        {onboard.translator.last_name}
                       </td>
                     </tr>
                     <tr

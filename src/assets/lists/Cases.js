@@ -31,7 +31,11 @@ export default [
         email: 'email@email.com',
         source: 'RAICES',
         status: 'Pending',
-        translator: 1,
+        translator: {
+            id: "123213fadsf234",
+            first_name: "John",
+            last_name: "Dao"
+        }
     },
     {
         case_number: 1,
@@ -60,7 +64,11 @@ export default [
         email: 'email@email.com',
         source: 'RAICES',
         status: 'Pending',
-        translator: 1
+        translator: {
+            id: "123213fadsf234",
+            first_name: "John",
+            last_name: "Dao"
+        }
     },
     {
         case_number: 2,
@@ -87,7 +95,11 @@ export default [
         email: 'email@email.com',
         source: 'RAICES',
         status: 'Pending',
-        translator: 1
+        translator: {
+            id: "123213fadsf234",
+            first_name: "John",
+            last_name: "Dao"
+        }
     },
     {
         case_number: 3,
@@ -114,7 +126,11 @@ export default [
         email: 'email@email.com',
         source: 'RAICES',
         status: 'Pending',
-        translator: 1
+        translator: {
+            id: "adf1213fadsf234",
+            first_name: "John",
+            last_name: "Dao"
+        }
     },
 
 ]
