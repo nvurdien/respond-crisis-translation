@@ -5,6 +5,7 @@ import formatDate from "../../assets/helpers/formatDate";
 import lang_short from "../../assets/lists/langShort";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import * as CaseService from "../../services/CaseService";
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 export default class Cases extends React.Component {
   constructor(props) {
@@ -20,13 +21,15 @@ export default class Cases extends React.Component {
       .then((snapshot) => {
         const data = snapshot.docs.map((doc) => doc.data());
         this.setState({ cases: data });
-      });
+      })
+      .catch(reason => this.state.errorCode = 'create-list-error');;
   }
 
   render() {
     const { cases } = this.state;
     return (
       <>
+        <ErrorMessage errorCode={this.state.errorCode}></ErrorMessage>
         <Sidebar
           active="cases"
           user_type={this.props.user_type ? "admin" : "all"}
