@@ -6,7 +6,7 @@ import lang_short from "../../assets/lists/langShort";
 import cases from "../../assets/lists/Cases";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import AssignTask from "../../components/AssignTask/AssignTask";
-import { db } from "../../firebase";
+import * as TranslatorService from "../../services/TranslatorService";
 
 export default class Translators extends React.Component {
   constructor(props) {
@@ -18,8 +18,7 @@ export default class Translators extends React.Component {
   }
 
   componentDidMount() {
-    db.collection("translators")
-      .get()
+    TranslatorService.getTranslators()
       .then((snapshot) => {
         const data = snapshot.docs.map((doc) => doc.data());
         this.setState({ translators: data });

@@ -4,7 +4,7 @@ import formatDate from "../../assets/helpers/formatDate";
 
 import lang_short from "../../assets/lists/langShort";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { db } from "../../firebase";
+import * as CaseService from "../../services/CaseService";
 
 export default class Cases extends React.Component {
   constructor(props) {
@@ -16,8 +16,7 @@ export default class Cases extends React.Component {
   }
 
   componentDidMount() {
-    db.collection("cases")
-      .get()
+    CaseService.getCases()
       .then((snapshot) => {
         const data = snapshot.docs.map((doc) => doc.data());
         this.setState({ cases: data });
