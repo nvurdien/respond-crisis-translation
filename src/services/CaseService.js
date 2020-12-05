@@ -1,6 +1,5 @@
-import {db} from "../firebase";
+import { db } from "../firebase";
 
 export const getCases = () => {
-    db.collection("cases")
-      .get();
+  return db.collection("cases").get();
 };
